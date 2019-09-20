@@ -25,6 +25,7 @@ def permutation(in_, parents=None):
         else:
             yield parents + (v,)
 
+
 if __name__ == '__main__':
     assert factorial(4) == 24
     assert factorial(5) == 120
