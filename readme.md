@@ -20,6 +20,12 @@
             </li>
         </ul>
     </li>
+    <li>Sorting
+        <ul>
+            <li><a href="/sorting/buble.py">Bubble</a></li>
+        </ul>
+    </li>
 </ul>
+
 
 - [flocking simulation (boids)](/boids)
