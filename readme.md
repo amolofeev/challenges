@@ -35,6 +35,11 @@
             </li>
         </ul>
     </li>
+    <li>Linked List
+        <ul>
+            <li><a href="/LinkedList/singly_linked_list.py">Singly linked list</a></li>
+        </ul>
+    </li>
 </ul>
 
 
