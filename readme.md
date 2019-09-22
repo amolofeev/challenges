@@ -29,7 +29,8 @@
         <ul>
             <li>Binary
                 <ul>
-                    <li><a href="/trees/binary/base.py">Binary</a></li>
+                    <li><a href="/trees/binary/base.py">Binary Tree</a></li>
+                    <li><a href="/trees/binary/search.py">Binary Search Tree</a></li>
                 </ul>
             </li>
         </ul>
