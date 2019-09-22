@@ -41,6 +41,25 @@ class TreeNode:
         else:
             return None
 
+    def height(self):
+        lh = 0
+        rh = 0
+        if self.left:
+            lh = self.left.height()
+        if self.right:
+            rh = self.right.height()
+        return 1 + max(lh, rh)
+
+    def is_balanced(self):
+        lh = 0
+        rh = 0
+        if self.left:
+            lh = self.left.height()
+        if self.right:
+            rh = self.right.height()
+
+        return abs(lh - rh) <= 1
+
 
 class BinarySearchTree:
     def __init__(self):
@@ -57,10 +76,20 @@ class BinarySearchTree:
             return None
         return self.root.search(key)
 
+    def height(self):
+        if self.root is None:
+            return 0
+        return self.root.height()
+
+    def is_balanced(self):
+        if self.root is None:
+            return True
+        return self.root.is_balanced()
+
 
 if __name__ == '__main__':
     inputs = {
-        '~= balanced': [5, 3, 1, 2, 0, 7, 6, 8, 9],
+        'balanced': [5, 3, 1, 2, 0, 7, 6, 8, 9],
         'sorted': [0, 1, 2, 3, 4, 5],
         'reversed': [5, 4, 3, 2, 1, 0],
     }
@@ -70,6 +99,9 @@ if __name__ == '__main__':
         b = BinarySearchTree()
         for key, value in zip(lst, lst):
             b.insert(key, value)
+        print('Height:', b.height())
+        print('Is balanced:', b.is_balanced())
+        print('Is equal to linked list:', b.height() == len(lst))
         for key, value in zip(lst, lst):
             node = b.search(key)
             assert node is not None
@@ -83,3 +115,4 @@ if __name__ == '__main__':
         node = b.search(not_exists)
         assert node is None
         print(f'Key {not_exists} doesn\'t found!')
+        print()
