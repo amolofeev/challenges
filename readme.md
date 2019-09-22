@@ -25,6 +25,15 @@
             <li><a href="/sorting/buble.py">Bubble</a></li>
         </ul>
     </li>
+    <li>Trees
+        <ul>
+            <li>Binary
+                <ul>
+                    <li><a href="/trees/binary/base.py">Binary</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
 </ul>
 
 
