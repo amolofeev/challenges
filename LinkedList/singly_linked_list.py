@@ -4,7 +4,6 @@ https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
 TODO: add reverse
 TODO: add deletion
 TODO: add sorting
-TODO: upd push_back to O(1)
 """
 from typing import Any, Union
 
@@ -18,24 +17,25 @@ class Node:
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def push_back(self, value: Any) -> None:
         """Add item in the end of list"""
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
+            self.tail = self.head
         else:
-            current = self.head
-
-            while current.next:
-                current = current.next
-            current.next = new_node
+            self.tail.next = new_node
+            self.tail = new_node
 
     def pop_head(self) -> Any:
         """Pop head item == Queue"""
         if self.head is not None:
             head = self.head
             self.head = self.head.next
+            if self.head is None:
+                self.tail = None
             return head.value
 
     def generator(self):
