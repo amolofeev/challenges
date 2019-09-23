@@ -28,17 +28,12 @@
     </li>
     <li>Trees
         <ul>
-            <li>Binary
-                <ul>
-                    <li><a href="/trees/binary/base.py">Binary Tree</a></li>
-                    <li><a href="/trees/binary/search.py">Binary Search Tree</a></li>
-                </ul>
-            </li>
+            <li><a href="/trees/binary/search.py">Binary Search Tree</a></li>
         </ul>
     </li>
     <li>Linked List
         <ul>
-            <li><a href="/LinkedList/singly_linked_list.py">Singly linked list</a></li>
+            <li><a href="/LinkedList/SinglyLinkedList/singly_linked_list.py">Singly linked list</a></li>
         </ul>
     </li>
 </ul>
