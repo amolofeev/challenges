@@ -1,7 +1,6 @@
 """
 https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
 
-TODO: add sorting
 TODO: add inserting into specified position
 """
 from typing import Any, Union
