@@ -2,8 +2,8 @@
 https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
 
 TODO: add reverse
-TODO: add deletion
 TODO: add sorting
+TODO: add inserting into specified position
 """
 from typing import Any, Union
 
@@ -49,6 +49,31 @@ class SinglyLinkedList:
                 current = current.next
                 yield current.value
 
+    def delete(self, index: int):
+        if not isinstance(index, int):
+            raise TypeError(f'index must be int, {type(index)} found')
+        if index < 0:
+            raise ValueError('index must be >= 0')
+
+        if self.head is None:
+            raise IndexError('Head is none')
+
+        if index == 0:
+            self.pop_head()
+        else:
+            n = 0
+            prev = None
+            curr = self.head
+            while curr.next and n < index:
+                prev = curr
+                curr = curr.next
+                n += 1
+
+            if n == index:
+                prev.next = curr.next
+            else:
+                raise IndexError
+
     def __getitem__(self, index: int) -> Any:
         if self.head is None:
             raise IndexError
@@ -69,18 +94,39 @@ class SinglyLinkedList:
 if __name__ == '__main__':
     from python.std.context_manager import ExceptionRaised
 
-    ll = SinglyLinkedList()
-    for i in range(5):
-        ll.push_back(i)
+
+    def make_sll(n=5):
+        sll = SinglyLinkedList()
+        for i in range(n):
+            sll.push_back(i)
+        return sll
+
+
+    sll = make_sll()
 
     with ExceptionRaised(IndexError) as e:
-        index_error = ll[15]
+        index_error = sll[15]
 
-    assert list(ll.generator()) == list(range(5))
+    assert list(sll.generator()) == list(range(5))
 
     for i in range(5):
-        assert ll[i] == i
+        assert sll[i] == i
 
-    for default, actual in map(lambda x: (x, ll.pop_head()), range(5)):
+    for default, actual in map(lambda x: (x, sll.pop_head()), range(5)):
         assert default == actual
-    assert ll.pop_head() is None
+    assert sll.pop_head() is None
+
+    # test deletions
+    sll = make_sll()
+    sll.delete(0)
+    sll.delete(1)
+    assert list(sll.generator()) == [1, 3, 4]
+
+    with ExceptionRaised(IndexError):
+        sll.delete(5)
+    with ExceptionRaised(ValueError):
+        sll.delete(-1)
+    with ExceptionRaised(TypeError):
+        sll.delete('1')
+    with ExceptionRaised(IndexError):
+        SinglyLinkedList().delete(1)
