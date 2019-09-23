@@ -103,3 +103,18 @@ class SinglyLinkedList:
     def __bool__(self):
         return self.head is not None
 
+    def sort(self, reversed=False):
+        """bubble sort"""
+        if self.head is None or self.head.next is None:
+            return
+        head1 = self.head
+
+        while head1.next is not None:
+            head2 = head1.next
+            while head2:
+                if reversed and (head1.value < head2.value):
+                    head1.value, head2.value = head2.value, head1.value
+                elif not reversed and (head1.value > head2.value):
+                    head1.value, head2.value = head2.value, head1.value
+                head2 = head2.next
+            head1 = head1.next

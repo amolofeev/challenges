@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 from .singly_linked_list import SinglyLinkedList
 
 
@@ -64,7 +64,6 @@ class SLLTestCase(TestCase):
             list(range(5))[::-1]
         )
 
-    @skip('not implemented')
     def test_sorting_asc(self):
         self.sll.sort()
         self.assertEqual(
@@ -72,7 +71,6 @@ class SLLTestCase(TestCase):
             list(range(5))
         )
 
-    @skip('not implemented')
     def test_sorting_desc(self):
         self.sll.sort(reversed=True)
         self.assertEqual(
