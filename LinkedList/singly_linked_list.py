@@ -1,7 +1,6 @@
 """
 https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
 
-TODO: add reverse
 TODO: add sorting
 TODO: add inserting into specified position
 """
@@ -12,6 +11,9 @@ class Node:
     def __init__(self, value: Any):
         self.value = value
         self.next: Union[Node, None] = None
+
+    def __str__(self):
+        return f'{self.value} - {self.next}'
 
 
 class SinglyLinkedList:
@@ -48,6 +50,17 @@ class SinglyLinkedList:
             while current.next:
                 current = current.next
                 yield current.value
+
+    def reverse(self):
+        if self.head is None:
+            return
+        prev, curr = None, self.head
+        while curr:
+            tmp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = tmp
+        self.head = prev
 
     def delete(self, index: int):
         if not isinstance(index, int):
@@ -130,3 +143,7 @@ if __name__ == '__main__':
         sll.delete('1')
     with ExceptionRaised(IndexError):
         SinglyLinkedList().delete(1)
+    # reversion
+    sll = make_sll()
+    sll.reverse()
+    assert list(sll.generator()) == list(range(5))[::-1]
