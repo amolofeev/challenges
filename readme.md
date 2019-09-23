@@ -5,6 +5,7 @@
                 <ul>
                     <li><a href="python/std/map.py">map</a></li>
                     <li><a href="python/std/map.py">filter</a></li>
+                    <li><a href="python/std/context_manager.py">context manager</a></li>
                 </ul>
             </li>
             <li>functools

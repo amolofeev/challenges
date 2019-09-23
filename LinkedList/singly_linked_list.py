@@ -49,15 +49,38 @@ class SinglyLinkedList:
                 current = current.next
                 yield current.value
 
+    def __getitem__(self, index: int) -> Any:
+        if self.head is None:
+            raise IndexError
+
+        n = 0
+        curr = self.head
+        while curr.next and n < index:
+            curr = curr.next
+            n += 1
+        if n == index:
+            return curr.value
+        raise IndexError
+
     def __bool__(self):
         return self.head is not None
 
 
 if __name__ == '__main__':
+    from python.std.context_manager import ExceptionRaised
+
     ll = SinglyLinkedList()
     for i in range(5):
         ll.push_back(i)
+
+    with ExceptionRaised(IndexError) as e:
+        index_error = ll[15]
+
     assert list(ll.generator()) == list(range(5))
+
+    for i in range(5):
+        assert ll[i] == i
+
     for default, actual in map(lambda x: (x, ll.pop_head()), range(5)):
         assert default == actual
     assert ll.pop_head() is None
