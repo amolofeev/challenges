@@ -1,7 +1,5 @@
 """
 https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list
-
-TODO: add inserting into specified position
 """
 from typing import Any, Union
 
@@ -117,3 +115,26 @@ class SinglyLinkedList:
                     head1.value, head2.value = head2.value, head1.value
                 head2 = head2.next
             head1 = head1.next
+
+    def insert_at(self, value: Any, index: int):
+        if index < 0:
+            raise IndexError
+
+        if index == 0:
+            if self.head is None:
+                self.push_back(value)
+            else:
+                new_node = Node(value)
+                new_node.next = self.head
+                self.head = new_node
+        else:
+            n = 0
+            prev = None
+            curr = self.head
+            while curr and n < index:
+                prev = curr
+                curr = curr.next
+                n += 1
+            new_node = Node(value)
+            prev.next = new_node
+            new_node.next = curr

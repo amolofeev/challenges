@@ -77,3 +77,24 @@ class SLLTestCase(TestCase):
             list(self.sll.generator()),
             list(range(5))[::-1]
         )
+
+    def test_insert_at_0(self):
+        self.sll.insert_at(9, 0)
+        self.assertEqual(
+            list(self.sll.generator()),
+            [9, 0, 1, 2, 3, 4]
+        )
+
+    def test_insert_at_n(self):
+        self.sll.insert_at(9, 2)
+        self.assertEqual(
+            list(self.sll.generator()),
+            [0, 1, 9, 2, 3, 4]
+        )
+
+    def test_insert_at_oversize(self):
+        self.sll.insert_at(9, 10)
+        self.assertEqual(
+            list(self.sll.generator()),
+            [0, 1, 2, 3, 4, 9]
+        )
