@@ -4,7 +4,7 @@ https://en.wikipedia.org/wiki/Binary_search_tree
 TODO: add deletion
 """
 
-from typing import Any, Union, Tuple
+from typing import Any, Union
 
 
 class TreeNode:
